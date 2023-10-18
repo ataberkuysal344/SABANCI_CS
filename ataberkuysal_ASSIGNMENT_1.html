@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total Suicides in İstanbul</title>
+</head>
+<body>
+    <svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" class="viewboxcontainer" width="400px" height="500px">
+        
+        <rect x="0" y="0" width="800" height="400" fill="#f0f0f0" /> 
+        <text x="200" y="0" fill="black" font-size="20">Total Suicides in Istanbul Per Year (2015-2022)</text>
+        <line x1="50" y1="250" x2="450" y2="250" stroke="gray" />
+        <text x="450" y="250" fill="black"font-size="12">Count</text>
+
+        <text x="62.5" y="270" fill="black" font-size="12">2015</text>
+        <text x="112.5" y="270" fill="black" font-size="12">2017</text>
+        <text x="162.5" y="270" fill="black" font-size="12">2017</text>
+        <text x="212.5" y="270" fill="black" font-size="12">2018</text>
+        <text x="262.5" y="270" fill="black" font-size="12">2019</text>
+        <text x="312.5" y="270" fill="black" font-size="12">2020</text>
+        <text x="362.5" y="270" fill="black" font-size="12">2021</text>
+        <text x="412.5" y="270" fill="black" font-size="12">2022</text>
+        
+      
+        <line x1="45" y1="25" x2="55" y2="25" stroke="red" />
+    
+        <line x1="45" y1="138.75" x2="55" y2="138.75" stroke="red" />
+   
+    
+        <line x1="50" y1="25" x2="50" y2="250" stroke="gray" />
+        <text x="25" y="27.5"font-size="12">600</text>
+        <text x="25"y="138.75"font-size="12">300</text>
+        <text x="35" y="250"font-size="12">0</text>
+      
+        <rect x="60" y="62" width="30" height="188" fill="red" />
+        <text x="75" y="59" fill="black" font-size="12" text-anchor="middle">432</text>
+
+        <rect x="110" y="62" width="30" height="188" fill="red" />
+        <text x="125" y="59" fill="black" font-size="12" text-anchor="middle">462</text>
+
+        <rect x="160" y="62" width="30" height="188" fill="red" />
+        <text x="175" y="59" fill="black" font-size="12" text-anchor="middle">504</text>
+        
+        <rect x="210" y="44" width="30" height="206" fill="red" />
+        <text x="225" y="41" fill="black" font-size="12" text-anchor="middle">553</text>
+        
+        <rect x="260" y="85" width="30" height="165" fill="red" />
+        <text x="275" y="82" fill="black" font-size="12" text-anchor="middle">442</text>
+        
+        <rect x="310" y="56" width="30" height="194" fill="red" />
+        <text x="325" y="53" fill="black" font-size="12" text-anchor="middle">520</text>
+        
+        <rect x="360" y="35" width="30" height="215" fill="red" />
+        <text x="375" y="32" fill="black" font-size="12" text-anchor="middle">577</text>
+        
+        <rect x="410" y="61" width="30" height="189" fill="red" />
+        <text x="425" y="58" fill="black" font-size="12" text-anchor="middle">508</text>
+
+      
+        
+           
+        
+    </svg>
+    
+
+    
+
+    <div class="slidecontainer">
+        <div class="slidecontainer">
+            <text x="100" y="300" fill="black" font-size="12">Total Suicides in Istanbul Per Year (2015-2022)<br><br></text>
+            <label for="viewbox-slider">ViewBox Slider:</label>
+            <input type="range" min="0" max="50" value=0 class="slider" id="viewbox-slider">
+
+            <label for="svg-width-elem">SVG Width:</label>
+            <input type="range" min="-400" max="400" value=0 class="slider" id="svg-width-elem">
+
+            <label for="svg-height-elem">SVG Height:</label>
+            <input type="range" min="-400" max="400" value=0 class="slider" id="svg-height-elem">
+          
+
+            <p id="toplefttext">Top Left: (0,0)</p>
+            <p id="toprighttext">Top Right: (800,0)</p> <!-- Adjusted for 800px width -->
+            <p id="bottomlefttext">Bottom Left: (0,400)</p> <!-- Adjusted for 400px height -->
+            <p id="bottomrighttext">Bottom Right: (800,400)</p> <!-- Adjusted for 800px width and 400px height -->
+        </div>
+    </div>
+
+    <script>
+        viewBoxSlider = document.getElementById("viewbox-slider");
+        viewBoxWidthSlider = document.getElementById("svg-width-elem");
+        viewBoxHeightSlider = document.getElementById("svg-height-elem");
+        svgElem = document.querySelector(".viewboxcontainer");
+        viewBoxSlider.oninput = function () {
+            svgElem.setAttribute("viewBox", (this.value) + " " + (this.value) + " " + (800 - this.value) + " " + (400 - this.value)); <!-- Adjusted for 800x400 viewBox -->
+            document.getElementById("toplefttext").innerHTML = "Top Left: (" + this.value + "," + this.value + ")";
+            document.getElementById("toprighttext").innerHTML = "Top Right: (" + (800 - this.value) + "," + this.value + ")";
+            document.getElementById("bottomlefttext").innerHTML = "Bottom Left: (" + this.value + "," + (400 - this.value) + ")";
+            document.getElementById("bottomrighttext").innerHTML = "Bottom Right: (" + (800 - this.value) + "," + (400 - this.value) + ")";
+        }
+        viewBoxWidthSlider.oninput = function () {
+            svgElem.setAttribute("width", (800 + parseInt(this.value)) + "px");
+        }
+        viewBoxHeightSlider.oninput = function () {
+            svgElem.setAttribute("height", (400 + parseInt(this.value)) + "px");
+        }
+    </script>
+</body>
+</html>
